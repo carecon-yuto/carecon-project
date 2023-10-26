@@ -8,9 +8,9 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * The model to policy mappings for the application.
+     * The policy mappings for the application.
      *
-     * @var array<class-string, class-string>
+     * @var array
      */
     protected $policies = [
         App\Models\Post::class=>App\Policies\PostPolicy::class,
@@ -18,14 +18,16 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
+     *
+     * @return void
      */
-    public function boot(): void
+    public function boot()
     {
         Gate::define('admin', function($user) {
-            foreach($user->roles as $role){
-                if($role->name=='admin') {
+            foreach ($user->roles as $role) {
+                if ($role->name == 'admin') {
                     return true;
-                }   
+                }
             }
             return false;
         });

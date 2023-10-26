@@ -15,6 +15,11 @@
             <div class="mx-4 sm:p-8">
                 <div class="mt-4">
 
+
+                <img src="sraeelfa/rarevel" alt="">
+                
+                
+
                 {{-- 修正部分 --}}
                 <div class="bg-white w-full  rounded-2xl px-10 pt-2 pb-8 shadow-lg hover:shadow-2xl transition duration-500">
                     <div class="mt-4">
@@ -33,7 +38,7 @@
                             <p class="mt-4 text-gray-600 py-4">{{Str::limit ($post->body, 100, ' …' )}} </p>
                             
                             <div class="text-sm font-semibold flex flex-row-reverse">
-                                <p>{{ $post->user->name }} • {{$post->created_at->format('Y年m月d日')}}</p>
+                            <p> {{ $post->user->name??'削除されたユーザー' }} • {{$post->created_at->diffForHumans()}}</p>
                             </div>
 
                              
